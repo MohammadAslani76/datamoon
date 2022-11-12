@@ -1,6 +1,11 @@
 import i18next from "i18next";
+import {useContext} from "react";
+import {DataContext} from "../../context/context";
 
-const Languages = ({language,setLanguage}) => {
+const Languages = () => {
+    const value = useContext(DataContext);
+    const [language,setLanguage] = value.language;
+
     return (
         <select onChange={e => {
             setLanguage(e.target.value)

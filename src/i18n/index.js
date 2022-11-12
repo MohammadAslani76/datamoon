@@ -3,8 +3,17 @@ import fa from "./fa"
 import en from "./en"
 import arab from "./arab";
 
+const getLanguage = () => {
+    const initialMode = localStorage.getItem("language");
+    if (initialMode === null){
+        return "fa"
+    }else{
+        return JSON.parse(localStorage.getItem("language"));
+    }
+}
+
 i18next.init({
-    lng: 'fa',
+    lng: getLanguage(),
     debug: true,
     resources: {
         en: {
