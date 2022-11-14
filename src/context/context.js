@@ -3,6 +3,9 @@ import {createContext, useState,useEffect} from "react";
 export const DataContext = createContext();
 
 export const DataProvider = (props) => {
+
+    // ----------- Login ----------------------
+
     // Get Dark mode in local storage
     const getMode = () => {
         const initialMode = localStorage.getItem("dark");
@@ -89,6 +92,8 @@ export const DataProvider = (props) => {
                 }
         }
     }
+
+    // ---------------- Dashboard -----------------------------------
 
     const value = {
         dark : [dark,setDark],

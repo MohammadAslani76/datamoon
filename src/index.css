@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navLinkStyle {
+    @apply flex items-center gap-2 cursor-pointer transition-all duration-300 hover:text-s-light-blue;
+}
+.navbarItems{
+    @apply flex justify-center items-center gap-1 cursor-pointer hover:text-s-light-blue duration-300;
+}

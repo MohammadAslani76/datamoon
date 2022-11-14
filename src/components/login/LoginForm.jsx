@@ -38,7 +38,7 @@ const LoginForm = () => {
                 confirmButtonText: "تایید",
                 timer: 5000
             })
-            navigate("/dashboard");
+            navigate("/dashboard/live-video");
             setUsername("");
             setPassword("");
         } else {

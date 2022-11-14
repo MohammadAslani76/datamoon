@@ -3,7 +3,7 @@ import DarkMode from "./DarkMode";
 import Languages from "./Languages";
 import Colors from "./Colors";
 import LoginForm from "./LoginForm";
-import image from "../../img/anpr7glow.png";
+import image from "../../assets/img/anpr7glow.png";
 import {useContext} from "react";
 import {DataContext} from "../../context/context";
 
