@@ -5,6 +5,18 @@ const en = {
     username : "username",
     password : "password",
     rememberMe : "remember me",
-    companyName : "Hoosh Dade Mahtab"
+    companyName : "Hoosh Dade Mahtab",
+    // Dashboard
+    liveVideo : "Live Videos",
+    cameraManagement : "Cameras Manager",
+    advancedSettings : "Advanced Settings",
+    permissions : "Permissions",
+    carAndDriver : "Car and Driver",
+    save : "Save",
+    report : "Report",
+    members : "Members",
+    aboutUS : "About Us",
+    manager : "Manager",
+    logOut : "Log out"
 }
 export default en;

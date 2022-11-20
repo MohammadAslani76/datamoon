@@ -2,6 +2,7 @@ import {ImSearch} from "react-icons/im";
 import {HiPlus} from "react-icons/hi";
 import {CameraDetails} from "../index";
 
+
 const Cameras = () => {
     return (
         <div className="text-dark-gray dark:text-mid-white max-h-main-full overflow-auto">

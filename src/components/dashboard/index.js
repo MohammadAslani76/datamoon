@@ -10,7 +10,7 @@ export {default as Report} from './Report';
 export {default as Save} from './Save';
 export {default as Cameras} from './cameras/Cameras';
 export {default as Sidebar} from './Sidebar';
-export {default as Error404} from './Error404';
+export {default as Error404} from './DefaultNavigate';
 export {default as ListVideo} from './liveVideo/ListVideo';
 export {default as OneColVideo} from './liveVideo/OneColVideo';
 export {default as TwoColsVideo} from './liveVideo/TwoColsVideo';

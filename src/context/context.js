@@ -1,6 +1,10 @@
+import axios from "axios";
 import {createContext, useState,useEffect} from "react";
+import {data} from "autoprefixer";
 
-export const DataContext = createContext();
+export const DataContext = createContext({
+
+});
 
 export const DataProvider = (props) => {
 
@@ -21,8 +25,8 @@ export const DataProvider = (props) => {
     }
     // Get Color in local storage
     const getColor = () => {
-        const initialMode = localStorage.getItem("color");
-        if (initialMode === null){
+        const initialColor = localStorage.getItem("color");
+        if (initialColor === null){
             return "default"
         }else{
             return JSON.parse(localStorage.getItem("color"));
@@ -30,8 +34,8 @@ export const DataProvider = (props) => {
     }
     // Get Language in local storage
     const getLanguage = () => {
-        const initialMode = localStorage.getItem("language");
-        if (initialMode === null){
+        const initialLanguage = localStorage.getItem("language");
+        if (initialLanguage === null){
             return "fa"
         }else{
             return JSON.parse(localStorage.getItem("language"));
@@ -43,6 +47,8 @@ export const DataProvider = (props) => {
     const [dark,setDark] = useState(getMode())
     const [color,setColor] = useState(getColor())
     const [language,setLanguage] = useState(getLanguage())
+    
+
 
     // Set Dark mode in local storage
     useEffect(() => {
@@ -93,12 +99,68 @@ export const DataProvider = (props) => {
         }
     }
 
+    // ---------------- Authenticate -----------------------------------
+
+    // Get User in local storage
+    const getUser = () => {
+        const initialUser = localStorage.getItem("user");
+        if (initialUser){
+            return JSON.parse(localStorage.getItem("user"))
+        }else{
+            return {loggedIn : false}
+        }
+    }
+
+    const [user,setUser] = useState(getUser());
+
+    // Set Language in local storage
+    useEffect(() => {
+        localStorage.setItem("user",JSON.stringify(user))
+    },[user])
+
+
     // ---------------- Dashboard -----------------------------------
 
+    // Get User in local storage
+    // const getUser = () => {
+    //     const initialUser = localStorage.getItem("user");
+    //     if (initialUser){
+    //         return JSON.parse(localStorage.getItem("user"))
+    //     }else{
+    //         return {username : null}
+    //     }
+    // }
+    //States
+    // const [user,setUser] = useState(getUser());
+    // const [cameras,setCameras] = useState([]);
+
+    // Set Language in local storage
+    // useEffect(() => {
+    //     localStorage.setItem("user",JSON.stringify(user))
+    // },[user])
+
+    // Get cameras list
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const {data} = await axios.get("http://localhost:4001/cameras/",{
+    //             headers: {
+    //                 Accept: "application/json",
+    //                 "Content-Type": "application/json",
+    //                 Authorization: `Bearer ${user.token}`
+    //             }
+    //         });
+    //         setCameras(data);
+    //     }
+    //     fetchData();
+    //
+    // },[])
+
+    // Values
     const value = {
         dark : [dark,setDark],
         color : [color,setColor],
         language : [language,setLanguage],
+        user : [user,setUser],
         handleColor,
         handleFormColor
     }

@@ -6,6 +6,8 @@ import {MdOutlineEdit} from "react-icons/md";
 
 
 const CameraDetails = () => {
+
+
     return (
         <div className="dark:bg-s-mid-blue bg-dark-white rounded-lg p-2 grid grid-cols-5 items-stretch gap-4">
             <div className="col-span-2 flex flex-col justify-center items-center gap-4 border border-m-light-blue rounded-lg px-1 py-3">

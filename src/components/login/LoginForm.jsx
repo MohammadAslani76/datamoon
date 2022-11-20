@@ -4,19 +4,23 @@ import {MdLockOutline} from "react-icons/md";
 import {useState} from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useContext} from "react";
 import {DataContext} from "../../context/context";
+import Languages from "./Languages";
 
 const LoginForm = () => {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [rememberMe, setRememberME] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
 
     //Context
     const value = useContext(DataContext);
     const handleFormColor = value.handleFormColor;
+    const [user,setUser] = value.user;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,9 +42,18 @@ const LoginForm = () => {
                 confirmButtonText: "تایید",
                 timer: 5000
             })
-            navigate("/dashboard/live-video");
+            // if (rememberMe){
+            //     localStorage.setItem("user",JSON.stringify(data.user));
+            // }
+            // localStorage.setItem("user",JSON.stringify(data.user));
+            if (user && user.loggedIn) return;
+            setUser({loggedIn : true});
             setUsername("");
             setPassword("");
+            if (location.state?.from){
+                navigate(location.state.from)
+            }
+            // navigate("/live-video");
         } else {
             Swal.fire({
                 icon: "error",
@@ -57,7 +70,7 @@ const LoginForm = () => {
 
     return (
         <form onSubmit={handleSubmit}
-              className="flex flex-col gap-4 rounded-lg bg-white dark:bg-s-mid-blue text-dark-gray dark:text-white p-8 w-full md:basis-1/2 lg:basis-1/3 mt-8 shadow"
+              className="flex flex-col gap-4 rounded-lg bg-white dark:bg-s-mid-blue text-dark-gray dark:text-white p-8 w-full md:basis-1/2 lg:basis-1/3 shadow"
               style={{backgroundColor: handleFormColor()}}>
             <h1 className="text-4xl">{i18next.t('loginTitle')}</h1>
             <h3 className="lg:text-xl mb-8">{i18next.t('loginText')}</h3>
@@ -78,9 +91,12 @@ const LoginForm = () => {
             </div>
             <div className="flex items-center gap-4 mb-4">
                 <input type="checkbox"
+                       name="remember"
+                       onChange={() => setRememberME(!rememberMe)}
                        className="appearance-none w-5 h-5 border-2 border-dark-white dark:border-m-light-blue cursor-pointer rounded checked:bg-m-light-blue"/>
                 <p>{i18next.t('rememberMe')}</p>
             </div>
+            <Languages/>
             <button
                 className="bg-s-light-blue text-white rounded-lg py-2 text-2xl transition-all duration-300 hover:bg-m-light-blue dark:hover:bg-m-light-blue">{i18next.t('login')}</button>
         </form>
